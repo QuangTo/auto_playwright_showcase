@@ -207,7 +207,7 @@ services:
   ## - Runs in single-node mode with web security disabled
   ##
   opensearch:
-    image: opensearchproject/opensearch:2.19.3
+    image: opensearchproject/opensearch:2.19.4
     logging:
       <<: *logging
     environment:
