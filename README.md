@@ -55,31 +55,31 @@ npm i
 Run all test
 
 ```
-npm i test:all
+npm run test:all
 ```
 
 Run with tag/ project
 
 ```
-npm i test:api
+npm run test:api
 ```
 
 Run UI project
 
 ```
-npm i test:happy
+npm run test:happy
 ```
 
 Generate service type base on swagger file
 
 ```
-npm i generated-api
+npm run generated-api
 ```
 
 Generate index file
 
 ```
-npm i index-generated
+npm run index-generated
 ```
 
 ### 🧾CODE CONDUCT FLOW
@@ -98,11 +98,12 @@ npm i index-generated
 
 ### API Explain
 
-Based on swagger file, we will leverage openapi-typescript then extract to {pet}.d.ts file. 
+Based on swagger file, we will leverage openapi-typescript then extract to {pet}.d.ts file.
 
-``` Sample
+```Sample
 npx openapi-typescript https://petstore3.swagger.io/api/v3/openapi.json  -o src/core/api/types/pet-type.ts --immutable --root-types true --export-type
 ```
+
 Ideally generated-api cli should auto run to validate api changes. this way help auto repo alway up-to-date with other services.
 {pet}.d.ts file help us easilly to validate request schema on test case
 
@@ -126,7 +127,7 @@ Default html
 npx playwright show-report
 ```
 
-Docker report-portal 
+Docker report-portal
 
 1. Run docker-compose -p reportportal up -d --force-recreate
 2. Open localhost port :8080
