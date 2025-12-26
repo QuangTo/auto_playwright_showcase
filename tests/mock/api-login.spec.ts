@@ -4,7 +4,7 @@ const TEST_URL = 'https://demo.playwright.dev/api-mocking';
  * sample based on doc
  */
 test('@api mock api request', async ({ page }) => {
-  //prepare data
+  // mock body request
   await page.route('*/**/api/v1/fruits', async (route) => {
     const json = [
       { id: 1, name: 'quangto' },
@@ -12,21 +12,31 @@ test('@api mock api request', async ({ page }) => {
     ];
     await route.fulfill({ json });
   });
-  // call page and asserrt
+  // asserrt response data
   await page.goto(TEST_URL);
   await expect(page.getByText('quangto')).toBeVisible();
   await expect(page.getByText('toquang')).toBeVisible();
 });
 
 test('@api  mock api response', async ({ page }) => {
-  //prepare data
+  const mockingNameRes = 'quangtoo';
   await page.route('*/**/api/v1/fruits', async (route) => {
     const reponse = await route.fetch();
+    //mock response data
     const json = await reponse.json();
-    await json.push({ name: 'qtoo', id: 1 });
+    await json.push({ name: mockingNameRes, id: 1 });
     await route.fulfill({ json });
   });
-  // call page and asserrt
+  //assert mock data
   await page.goto(TEST_URL);
-  await expect(page.getByText('qtoo')).toBeVisible();
+  await expect(page.getByText(mockingNameRes)).toBeVisible();
+});
+
+test('@api  mock test with har', async ({ page }) => {
+  //prepare data
+  await page.routeFromHAR('tests/mock/automationintesting.online.har', { url: '**/admin/rooms', update: false });
+
+  // asserrt page
+  await page.goto('https://automationintesting.online/admin/rooms');
+  await expect(page.getByText('Create')).toBeVisible();
 });
