@@ -53,7 +53,7 @@
   "dependencies": {
     "@anatine/zod-mock": "^3.14.0",
     "@faker-js/faker": "^8.4.1",
-    "@moznion/openapi-fetch-gen": "^0.3.2",
+    "@moznion/openapi-fetch-gen": "^0.5.0",
     "@openapi-contrib/openapi-schema-to-json-schema": "^5.1.0",
     "allure-playwright": "^3.0.0-beta.12",
     "axios": "^1.9.0",
