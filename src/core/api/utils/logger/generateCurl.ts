@@ -1,5 +1,5 @@
 // throw curl for debbuging
-export function generateCurlCommand(method: string, url: string, data?: object, headers?: { [key: string]: string }): string {
+export function generateCurl(method: string, url: string, data?: object, headers?: { [key: string]: string }): string {
   const jsonData = data ? JSON.stringify(data) : '';
   const dataPart = jsonData ? `-d '${jsonData}'` : '';
   const headerPart = headers

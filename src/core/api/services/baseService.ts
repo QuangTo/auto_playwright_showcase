@@ -1,8 +1,8 @@
 // token in
 import { createHeaders } from './deafaultHeaders';
-import { Logger } from '../helpers/logger/Logger';
+import { Logger } from '../utils/logger/logger';
 import { APIRequestContext, APIResponse } from '@playwright/test';
-import { generateCurlCommand } from '../helpers/logger/generateCurlCommand';
+import { generateCurl } from '../utils/logger/generateCurl';
 
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
@@ -22,7 +22,7 @@ export class BaseService {
       data: body.data
     };
 
-    const curlCommand = generateCurlCommand(method, url, body.data, fullHeaders);
+    const curlCommand = generateCurl(method, url, body.data, fullHeaders);
 
     try {
       const response = await this.apiRequest[method.toLowerCase()](url, requestBody);

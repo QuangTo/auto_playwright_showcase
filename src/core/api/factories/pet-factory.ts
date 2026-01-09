@@ -4,7 +4,7 @@ import { InputWrapper } from '../types/input-wrapper';
 //Builder Pattern
 export const petBuilder = (overrides: Partial<InputWrapper<SchemaPet>> = {}): InputWrapper<SchemaPet> => {
   return {
-    id: 0,
+    id: Math.floor(Math.random() * 10000),
     name: `pet-${Date.now()}`,
     category: {
       id: 0,
